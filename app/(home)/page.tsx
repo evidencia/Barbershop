@@ -1,7 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <h1 className="px-4 flex mt-2">Hello word</h1>
-  );
+  return <h1 className="mt-2 flex px-4">Hello word</h1>;
 }
