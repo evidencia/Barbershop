@@ -51,7 +51,6 @@ const ServiceItem = ({
 
     const refreshAvailableHours = async () => {
       const _dayBookings = await getDayBookings(barbershop.id, date);
-
       setDayBookings(_dayBookings);
     };
 
