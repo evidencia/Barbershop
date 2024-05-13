@@ -23,6 +23,7 @@ import { saveBooking } from "../_actions/seve-booking";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { getDayBookings } from "../_actions/get-day-bookings";
+import BookingInfo from "@/app/_components/booking-info";
 
 interface ServiceItemProps {
   service: Service;
@@ -220,45 +221,16 @@ const ServiceItem = ({
                     </div>
                   )}
 
-                  <div className="border-t border-solid border-secondary px-5 py-6">
-                    <Card>
-                      <CardContent className="flex flex-col gap-3 p-3">
-                        <div className="flex justify-between">
-                          <h2 className="font-bold">{service.name}</h2>
-                          <h3 className="text-sm font-bold">
-                            {" "}
-                            {Intl.NumberFormat("pt-BR", {
-                              style: "currency",
-                              currency: "BRL",
-                            }).format(Number(service.price))}
-                          </h3>
-                        </div>
-
-                        {date && (
-                          <div className="flex justify-between">
-                            <h3 className="text-sm text-gray-400">Data</h3>
-                            <h4 className="text-sm">
-                              {format(date, "dd 'de' MMMM", {
-                                locale: ptBR,
-                              })}
-                            </h4>
-                          </div>
-                        )}
-
-                        {hour && (
-                          <div className="flex justify-between">
-                            <h3 className="text-sm text-gray-400">Horário</h3>
-                            <h4 className="text-sm">{hour}</h4>
-                          </div>
-                        )}
-
-                        <div className="flex justify-between">
-                          <h3 className="text-sm text-gray-400">Babearia</h3>
-                          <h4 className="text-sm">{barbershop.name}</h4>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
+                  <BookingInfo
+                    booking={{
+                      barbershop: barbershop,
+                      date:
+                        date && hour
+                          ? setMinutes(setHours(date, Number(hour.split(":")[0])), Number(hour.split(":")[1]))
+                          : undefined,
+                      service: service
+                    }}
+                  />
 
                   <SheetFooter className="px-5 pb-6">
                     <Button
