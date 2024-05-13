@@ -11,24 +11,26 @@ import SideMenu from "./side-menu";
 
 export const Header = () => {
   return (
-    <Card>
-      <CardContent className="flex flex-row items-center justify-between px-5 py-5">
-        <Link href="/">
-          <Image src="/logo.png" alt="fsw barber" height={22} width={120} />
-        </Link>
+    <header>
+      <Card>
+        <CardContent className="flex flex-row items-center justify-between px-5 py-5">
+          <Link href="/">
+            <Image src="/logo.png" alt="fsw barber" height={22} width={120} />
+          </Link>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="h-8 w-8">
-              <Menu size={18} />
-            </Button>
-          </SheetTrigger>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="h-8 w-8">
+                <Menu size={18} />
+              </Button>
+            </SheetTrigger>
 
-          <SheetContent className="p-0">
-            <SideMenu />
-          </SheetContent>
-        </Sheet>
-      </CardContent>
-    </Card>
+            <SheetContent className="p-0">
+              <SideMenu />
+            </SheetContent>
+          </Sheet>
+        </CardContent>
+      </Card>
+    </header>
   );
 };
