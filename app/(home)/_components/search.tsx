@@ -9,9 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/app/_components/ui/form";
 import { useRouter } from "next/navigation";
 
-
-
-
 const formSchemma = z.object({
   search: z.string({ required_error: "Campo obrigatório." })
     .trim()
@@ -21,6 +18,8 @@ const formSchemma = z.object({
 interface SearchProps {
   defaultValues?: z.infer<typeof formSchemma>
 }
+
+
 
 export const Search = ({ defaultValues }: SearchProps) => {
   const router = useRouter()
@@ -33,6 +32,7 @@ export const Search = ({ defaultValues }: SearchProps) => {
   const handleSubmit = (data: z.infer<typeof formSchemma>) => {
     router.push(`/barbershops?search=${data.search}`)
   }
+
 
   return (
     <div className="flex items-center gap-2">
