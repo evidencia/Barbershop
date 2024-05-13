@@ -15,17 +15,17 @@ export default async function Home() {
     db.barbershop.findMany({}),
     session?.user
       ? db.booking.findMany({
-          where: {
-            userId: (session.user as any).id,
-            date: {
-              gte: new Date(),
-            },
+        where: {
+          userId: (session.user as any).id,
+          date: {
+            gte: new Date(),
           },
-          include: {
-            service: true,
-            barbershop: true,
-          },
-        })
+        },
+        include: {
+          service: true,
+          barbershop: true,
+        },
+      })
       : Promise.resolve([]),
   ]);
 
@@ -73,7 +73,9 @@ export default async function Home() {
 
         <div className="flex gap-4 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
           {barbershop.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            <div key={barbershop.id} className="min-w-[167px] max-w-[167px]">
+              <BarbershopItem barbershop={barbershop} />
+            </div>
           ))}
         </div>
       </div>
@@ -85,7 +87,9 @@ export default async function Home() {
 
         <div className="flex gap-4 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
           {barbershop.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            <div key={barbershop.id} className="min-w-[167px] max-w-[167px]">
+              <BarbershopItem barbershop={barbershop} />
+            </div>
           ))}
         </div>
       </div>
